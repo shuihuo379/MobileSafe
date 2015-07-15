@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:itheima="http://schemas.android.com/apk/res/com.itheima.mobilesafe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView 
+        android:id="@+id/textview01"
+        android:layout_width="match_parent"
+    	android:layout_height="55dip"
+    	android:text="设置中心"
+    	android:textSize="22sp"
+    	android:gravity="center"
+    	android:background="#8866ff00"/>
+    
+    <!-- 自定义组合控件以及自定义属性的使用(三个自定义属性在attrs.xml文件中指定) -->
+	<com.itheima.mobilesafe.ui.SettingItemView
+	    itheima:title="设置自动更新"
+	    itheima:desc_on="设置自动更新已经开启"
+	    itheima:desc_off="设置自动更新已经关闭"
+	    android:id="@+id/siv_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </com.itheima.mobilesafe.ui.SettingItemView>
+    
+	 <com.itheima.mobilesafe.ui.SettingItemView
+        android:id="@+id/siv_show_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        itheima:desc_off="设置显示号码归属地已经关闭"
+        itheima:desc_on="设置显示号码归属地已经开启"
+        itheima:title="设置显示号码归属地" >
+    </com.itheima.mobilesafe.ui.SettingItemView>
+    
+	<com.itheima.mobilesafe.ui.SettingClickView
+	    android:id="@+id/scv_changebg"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+	</com.itheima.mobilesafe.ui.SettingClickView>
+	
+	
+	<com.itheima.mobilesafe.ui.SettingItemView
+        android:id="@+id/siv_callsms_safe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        itheima:desc_off="黑名单拦截已经关闭"
+        itheima:desc_on="黑名单拦截已经开启"
+        itheima:title="黑名单拦截设置" >
+    </com.itheima.mobilesafe.ui.SettingItemView>
+    
+
+	<com.itheima.mobilesafe.ui.SettingItemView
+        android:id="@+id/siv_watchdog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        itheima:desc_off="看门狗已经关闭"
+        itheima:desc_on="看门狗已经开启"
+        itheima:title="程序设置" >
+    </com.itheima.mobilesafe.ui.SettingItemView>
+</LinearLayout>

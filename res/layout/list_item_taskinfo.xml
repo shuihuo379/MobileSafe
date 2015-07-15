@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dip">
+    <ImageView 
+        android:id="@+id/iv_task_icon"
+        android:src="@drawable/ic_launcher"
+        android:layout_width="55dip"
+        android:layout_height="55dip"
+        android:layout_marginBottom="5dip"
+        android:layout_marginTop="5dip"
+        android:layout_marginLeft="5dip"/>
+    <TextView
+        android:id="@+id/tv_task_name"
+        android:layout_marginTop="10dip"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@id/iv_task_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:text="程序名称"/>
+    
+    <TextView
+        android:id="@+id/tv_task_memsize"
+        android:layout_marginTop="1dip"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@id/iv_task_icon"
+        android:layout_below="@id/tv_task_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#99000000"
+        android:text="内存占用"/>
+    
+    <!-- 带有checkbox的listview 设置点击事件时,需要将checkbox自身获取焦点的能力屏蔽掉 -->
+    <CheckBox 
+        android:focusable="false"
+        android:clickable="false"
+        android:id="@+id/cb_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView 
+        android:id="@+id/textview01"
+        android:layout_width="match_parent"
+    	android:layout_height="55dip"
+    	android:text="功能列表"
+    	android:textSize="22sp"
+    	android:gravity="center"
+    	android:background="#8866ff00"/>
+    
+    <ListView 
+        android:verticalSpacing="10dip"
+        android:layout_marginTop="15dip"
+        android:id="@+id/list_select_contact"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"/>
+
+</LinearLayout>

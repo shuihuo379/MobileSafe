@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.itheima.mobilesafe"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    
+    <!-- 添加监听来电的权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    
+    <!-- GPS定位服务所需的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+    
+    <!-- 添加振动的权限 -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 添加打电话监听的权限 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <!-- 实现触摸窗体的功能需要添加的权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- 拨打电话与挂断电话的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    
+    <!-- 删除指定黑名单号码的呼叫记录所需添加的权限 -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+	<uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
+	
+	<!-- 短信内容备份(写入XML文件中)需要添加的权限 -->
+	<uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    
+    <!-- 安装快捷图标所需要的权限 -->
+   	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+   	
+   	<!-- 杀死其它进程的权限 -->
+   	<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+   	
+   	<!-- 获取任务栈的权限(看门狗监视系统程序运行状态的服务所需权限) -->
+   	<uses-permission android:name="android.permission.GET_TASKS"/>
+   	
+   	<!-- 反射获取包大小的信息所需要的权限 -->
+   	<uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+   	
+   	<!-- 清理应用缓存的权限 -->
+   	<uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+   	<!-- 系统级别的权限,不能使用 -->
+<!--    	<uses-permission android:name="android.permission.DELETE_CACHE_FILES"/> -->
+	
+    <!-- 测试所用的指令集 -->
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.itheima.mobilesafe" />
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+        <activity
+            android:name="com.itheima.mobilesafe.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.itheima.mobilesafe.HomeActivity"/>
+        <activity android:name="com.itheima.mobilesafe.SettingActivity"/>
+        <activity android:name="com.itheima.mobilesafe.LostFindActivity"/>
+        <activity android:name="com.itheima.mobilesafe.Setup1Activity"/>
+        <activity android:name="com.itheima.mobilesafe.Setup2Activity"/>
+        <activity android:name="com.itheima.mobilesafe.Setup3Activity"/>
+        <activity android:name="com.itheima.mobilesafe.Setup4Activity"/>
+        <activity android:name="com.itheima.mobilesafe.SelectContactActivity"/>
+     	<activity android:name="com.itheima.mobilesafe.AtoolActivity"/>
+     	<activity android:name="com.itheima.mobilesafe.NumberAddressQueryActivity"/>
+     	<activity android:name="com.itheima.mobilesafe.CallSmsSafeActivity"/>
+     	<activity android:name="com.itheima.mobilesafe.AppManagerActivity"/>
+     	<activity android:name="com.itheima.mobilesafe.TaskManagerActivity"/>
+     	<activity android:name="com.itheima.mobilesafe.TaskSettingActivity"/>
+     	<activity android:name="com.itheima.mobilesafe.TrafficManagerActivity"/>
+     	<activity android:name="com.itheima.mobilesafe.CleanCacheActivity"/>
+     	<activity 
+     	    android:configChanges="orientation|keyboardHidden|screenSize"
+     	    android:name="com.itheima.mobilesafe.AntiVirusActivity">
+       	</activity>
+     	<!-- 指定启动模式为单例模式 -->
+     	<activity 
+     	    android:launchMode="singleInstance"
+     	    android:excludeFromRecents="true"
+     	    android:name="com.itheima.mobilesafe.EnterPwdActivity">
+        </activity>
+        
+        <receiver android:name="com.itheima.mobilesafe.receiver.BootCompleteReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name="com.itheima.mobilesafe.receiver.SMSReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        
+       <receiver
+            android:name="com.itheima.mobilesafe.receiver.MyAdmin"
+            android:description="@string/sample_device_admin_description"
+            android:label="@string/sample_device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_sample" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name="com.itheima.mobilesafe.receiver.MyWidget" >
+		    <intent-filter>
+		        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+		    </intent-filter>
+    		<meta-data android:name="android.appwidget.provider"
+                 android:resource="@xml/process_widget_provider"/>
+		</receiver>
+        
+        <receiver android:name="com.itheima.mobilesafe.receiver.KillAllReceiver" >
+		    <intent-filter>
+		        <action android:name="com.itheima.mobilesafe.killall" />
+		    </intent-filter>
+		</receiver>
+        
+        <service android:name="com.itheima.mobilesafe.service.GPSService"/>
+		<service android:name="com.itheima.mobilesafe.service.AddressService"/>
+		<service android:name="com.itheima.mobilesafe.service.CallSmsSafeService"/>
+		<service android:name="com.itheima.mobilesafe.service.AutoCleanService"/>
+		<service android:name="com.itheima.mobilesafe.service.UpdateWidgetService"/>
+		<service android:name="com.itheima.mobilesafe.service.WatchDogService"/>
+    </application>
+
+</manifest>
